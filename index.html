@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type='text/javascript' src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="charcount.jquery.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#example1").charCount({limit:100,hardlimit:true});
+		$("#example2").charCount({limit:100,hardlimit:false,low:25,sid:"textbox2"});
+    	$("#example3").charCount({limit:200,hardlimit:true,low:25,sid:"textbox3"});
+    	$("#example4").charCount({limit:500,hardlimit:true,low:50,sid:"textarea1"});
+	});
+</script>
+<link rel="Stylesheet" href="styles.css" media="all" />
+<style type="text/css">
+	code {padding-left:5em;font-family:"Courier New", Courier, monospace;display:block;}
+	input,textarea {padding:5px;border:1px solid #dadada}
+	input {width:200px}
+	body{font-family:Arial, Helvetica, sans-serif;}
+	.grey {color:#a9a9a9}
+</style>
+<title>Character Count Example</title>
+</head>
+
+<body>
+<h1>Default Parameters</h1>
+<p>This is a list of all the default parameters for the plugin.  Default values can be changed for each implementation by setting new values when an instance of the plugin is declared. </p>
+<code>
+	$(function() { <br />
+    &nbsp;&nbsp;&nbsp;$("#example1").charCount({ <br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;limit:100, <span class='grey'>// (INTEGER) Default character limit</span> <br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;low: 10, <span class='grey'> // (INTEGER) Indicate length is approaching limit</span> <br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sid:"cc", <span class='grey'> // (STRING) Unique Identifier - needed for multiple instances</span> <br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hardlimit:true, <span class='grey'> // (BOOLEAN) Enforce a hard limit and do not allow any more characters to be added</span> <br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;overlimitclass:"error", <span class='grey'> // (STRING) CSS Class to be added to input when over limit</span> <br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lowcountclass:"count-low", <span class='grey'> // (STRING) CSS Class to be added to remanining number when 'low' is reached</span> <br />
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;charsremainingclass:"chars-remaining" <span class='grey'> // (STRING) CSS Class added to 'Characters Remaining' text + number</span> <br />
+    &nbsp;&nbsp;&nbsp;}) <br />
+    });
+</code>
+
+
+<h1>Example 1</h1>
+<p>Simple implementation on a single text box; a hard limit of 100 characters has been applied</p>
+<h4>HTML</h4>
+<code>
+	&lt;input type="text" value="" id="example1" /&gt;
+</code>
+<h4>Javascript</h4>
+<code>
+	$(function() { <br />
+    &nbsp;&nbsp;&nbsp;$("#example1").charCount({limit:100,hardlimit:true}) <br />
+    });
+</code>
+<h4>Example</h4>
+<div style="padding:5em;background:#eee"><input type="text" value="" id="example1" /></div>
+
+<br /><br />
+
+<h1>Example 2</h1>
+<p>Implementation on a two text boxs, one with a 'soft' limit of 100 characters, and one with a 'hard' limit of 200 characters.  A 'low' indicator has been added to both textboxes at 25 characters.<br /><strong>Note:</strong> when using multiple instances on one page, the 'sid' (unique selector ID) parameter must be set.</p>
+<h4>HTML</h4>
+<code>
+	&lt;input type="text" value="" id="example2" /&gt;<br />
+	&lt;input type="text" value="" id="example3" /&gt;
+</code>
+<h4>Javascript</h4>
+<code>
+	$(function() { <br />
+    &nbsp;&nbsp;&nbsp;$("#example2").charCount({limit:100,hardlimit:false,low:25,sid:'textbox2'}) <br />
+    &nbsp;&nbsp;&nbsp;$("#example3").charCount({limit:200,hardlimit:true,low:25,sid:'textbox3'}) <br />
+    });
+</code>
+<h4>Example</h4>
+<div style="padding:5em;background:#eee">
+<input type="text" value="" id="example2" /><br />
+<input type="text" value="" id="example3" />
+</div>
+
+<br /><br />
+
+<h1>Example 3</h1>
+<p>Plugin applied to a &lt;textarea&gt; element. </p>
+<h4>HTML</h4>
+<code>
+	&lt;textarea id="example4" rows="5" cols="50" &gt;&lt;textarea&gt;
+</code>
+<h4>Javascript</h4>
+<code>
+	$(function() { <br />
+    &nbsp;&nbsp;&nbsp;$("#example2").charCount({limit:500,hardlimit:true,low:50}) <br />
+    });
+</code>
+<h4>Example</h4>
+<div style="padding:5em;background:#eee"><textarea id="example4" rows="5" cols="50"></textarea></div>
+<br />
+<br />
+</body>
+</html>
